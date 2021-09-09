@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>NrdHuParser</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/chota/css/chota.min.css"/>
+        <style>
+            :root {
+                --color-primary: #da1d50; /* brand color */
+                --grid-maxWidth: 108rem; /* max container width 1080px */
+            }
+            body.dark {
+                --bg-color: #000;
+                --bg-secondary-color: #131316;
+                --font-color: #f5f5f5;
+                --color-grey: #ccc;
+                --color-darkGrey: #777;
+            }
+            #table-results {font-size: 10px}
+            table, th, tr, td {border: 1px solid var(--color-grey)}
+            .container-max {padding: 0 1em}
+        </style>
+
+    </head>
+    <body>
+        <script>
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark');
+            }
+        </script>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a href="https://nrd.hu/hasznaltlaptopok.php" target="_blank">nrd.hu használt laptopok</a>
+                    <textarea id="nrdhu-html" rows="3" placeholder="Ide másold be a renderelt HTML-t a fenti linkről (CTRL+SHIFT+I / F12, Inspector fül, a HTML tagre kattintás, másolás)."></textarea>
+                    <p id="nrdhu-parse-result">...</p>
+                </div>
+                <div class="col">
+                    <a href="https://www.cpubenchmark.net/cpu_list.php" target="_blank">cpubenchmark.net lista</a>
+                    <textarea id="cpubenchmarknet-html" rows="3" placeholder="Ide másold be a renderelt HTML-t a fenti linkről (CTRL+SHIFT+I / F12, Inspector fül, a HTML tagre kattintás, másolás)."></textarea>
+                    <p id="cpubenchmarknet-parse-result">...</p>
+                </div>
+                <div class="col">
+                    <a href="https://www.videocardbenchmark.net/gpu_list.php" target="_blank">videocardbenchmark.net lista</a>
+                    <textarea id="videocardbenchmarknet-html" rows="3" placeholder="Ide másold be a renderelt HTML-t a fenti linkről (CTRL+SHIFT+I / F12, Inspector fül, a HTML tagre kattintás, másolás)."></textarea>
+                    <p id="videocardbenchmarknet-parse-result">...</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="button primary" onclick="run()">Feldolgozás</button>
+                    <span id="status" style="margin-left: 1em">Várakozás...</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-max">
+            <div class="row">
+                <div id="table-results" class="col">
+
+                </div>
+            </div>
+        </div>
+        <script src="assets/app/js/utils.js"></script>
+        <script src="assets/app/js/main.js"></script>
+    </body>
+</html>
